@@ -40,6 +40,16 @@ public class Robot extends TimedRobot {
 // pivot motor define
   private CANSparkMax pivot_motor = new CANSparkMax(Constants.pivot_motor_ID, MotorType.kBrushless);
 
+// intake motors
+private CANSparkMax lower_intake = new CANSparkMax(Constants.lower_In_ID, MotorType.kBrushless);
+private CANSparkMax upper_intake = new CANSparkMax(Constants.upper_In_ID, MotorType.kBrushless);
+
+private CANSparkMax lower_shooter = new CANSparkMax(Constants.lower_In_ID, MotorType.kBrushless);
+private CANSparkMax upper_shooter = new CANSparkMax(Constants.upper_In_ID, MotorType.kBrushless);
+
+
+
+//shooter motors
 
 
   //joysticks
@@ -50,7 +60,10 @@ public class Robot extends TimedRobot {
 //joystick buttons
 private JoystickButton pivot_up= new JoystickButton(r_Joystick, 2);
 private JoystickButton pivot_down= new JoystickButton(r_Joystick, 3);
-  
+ 
+private JoystickButton Intake = new JoystickButton(l_Joystick, 3);
+private JoystickButton Shoot = new JoystickButton(l_Joystick, 2);
+
   
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -74,6 +87,12 @@ private JoystickButton pivot_down= new JoystickButton(r_Joystick, 3);
   l_motor_3.setIdleMode(IdleMode.kBrake);
   l_motor_4.setIdleMode(IdleMode.kBrake);
  
+  lower_intake.setIdleMode(IdleMode.kBrake);
+  upper_intake.setIdleMode(IdleMode.kBrake);
+
+  lower_shooter.setIdleMode(IdleMode.kBrake);
+  upper_shooter.setIdleMode(IdleMode.kBrake);
+
 
   pivot_motor.setIdleMode(IdleMode.kBrake);
 //invert motors
@@ -155,14 +174,27 @@ l_motor_4.follow(l_motor_1);
   l_motor_1.set(r_Joystick.getY() + r_Joystick.getX());  // Left motor forward/backward and turning
 
 
+  if (Intake.getAsBoolean()) { //if intake is yes
+    upper_intake.set(0); //set speed for intake motors
+    lower_intake.set(0);// set speed fro intake motors
+
+  }
+
+  if (Shoot.getAsBoolean()){ //if shoot yes
+    upper_shooter.set(0); //speed for shooter
+    lower_shooter.set(0); //speed for shooter
+  }
+  
   
   
 
+
+
   if (pivot_up.getAsBoolean()) {
-    pivot_motor.set(Constants.pivot_speed);
+    pivot_motor.set(Constants.pivot_speed); //move pivot up
   }
   else if (pivot_down.getAsBoolean()) {
-    pivot_motor.set(-Constants.pivot_speed);
+    pivot_motor.set(-Constants.pivot_speed); //move pivot down
   }
   else {
     pivot_motor.set(0);

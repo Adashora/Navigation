@@ -19,9 +19,19 @@ public class Constants {
     public static final int left_M3_ID = 6;
     public static final int left_M4_ID = 7;
 
+    //Intake constants
+    public static final int lower_In_ID = 9;
+    public static final int upper_In_ID = 10;
+
+    //shooter constants
+    public static final int lower_Sh_ID = 11;
+    public static final int upper_Sh_ID = 12;
+
+
+
     //pivot constants
     //pivot motor CANID
-    public static final int pivot_motor_ID = 4; 
+    public static final int pivot_motor_ID = 8; 
     //pivot speed
     public static final double pivot_speed = 0.5;
 }
