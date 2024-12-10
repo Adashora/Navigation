@@ -79,8 +79,13 @@ private JoystickButton pivot_down= new JoystickButton(r_Joystick, 3);
 //invert motors
 //r_motor_1.setInverted(true);
 //r_motor_2.setInverted(true);
+//r_motor_3.setInverted(true);
+//r_motor_4.setInverted(true);
+
 //l_motor_1.setInverted(true);
 //l_motor_2.setInverted(true);
+//l_motor_3.setInverted(true);
+//l_motor_4.setInverted(true);
 
 //inverting  pivot motor
 //pivot_motor.setInverted(true);
